@@ -91,7 +91,8 @@ kolorów powinna jednak wystarczyæ.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -116,6 +117,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
 
-##%files jiv
-##%defattr(644,root,root,755)
-##%attr(755,root,root) %{_bindir}/jiv
+%files jiv
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/jiv
