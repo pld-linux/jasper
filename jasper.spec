@@ -38,7 +38,7 @@ Requires:	libjpeg-devel
 Header files needed to compile programs with libjasper.
 
 %description devel -l pl
-Pliki nag³ówkowe potrzebne do linkowana z libjasper.
+Pliki nag³ówkowe potrzebne do konsolidacji z libjasper.
 
 %package static
 Summary:	JasPer - static library
@@ -47,7 +47,7 @@ Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
-Static version of libjasper..
+Static version of libjasper.
 
 %description static -l pl
 Statyczna biblioteka libjasper.
