@@ -94,8 +94,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_xbindir}
-mv -f $RPM_BUILD_ROOT{%{_bindir},%{_xbindir}}/jiv
+##install -d $RPM_BUILD_ROOT%{_xbindir}
+##mv -f $RPM_BUILD_ROOT{%{_bindir},%{_xbindir}}/jiv
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -121,4 +121,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files jiv
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_xbindir}/*
+##%attr(755,root,root) %{_xbindir}/*
