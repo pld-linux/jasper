@@ -53,7 +53,7 @@ Statyczna biblioteka libjasper.
 %setup -q
 
 %build
-autoconf
+%{__autoconf}
 %configure \
 	--enable-shared
 
