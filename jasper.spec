@@ -71,7 +71,7 @@ color. For basic testing purposes, however, the color reproduction
 should suffice.
 
 %description jiv -l pl
-Prosta przegl±darka obrazków JasPer. Ma podstawow± funkcjonalo¶æ
+Prosta przegl±darka obrazków JasPer. Ma podstawow± funkcjonalno¶æ
 przewijania i powiêkszania. Poszczególne sk³adniki obrazka mog± byæ
 ogl±dane oddzielnie. Sk³adowe kolory mog± byæ ogl±dane tak¿e razem,
 jako z³o¿ony obraz. Aktualnie przegl±darka ma tylko prost± obs³ugê
