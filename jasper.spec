@@ -1,17 +1,18 @@
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
-Version:	1.700.5
-Release:	2
+Version:	1.701.0
+Release:	1
 License:	BSD-like
 Group:		Libraries
 Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
-# Source0-md5:	6c21653efce946a611a78876fb7ebf3b
+# Source0-md5:	22a9f74fc880e38dd125c60aa4e4ce97
 URL:		http://www.ece.uvic.ca/~mdadams/jasper/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-BuildRequires:	glut-devel
+BuildRequires:	glut-devel >= 3.7-12
 BuildRequires:	libjpeg-devel
+BuildRequires:	libtool
 BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,7 +33,7 @@ implementacjê tego formatu).
 Summary:	JasPer - header files
 Summary(pl):	JasPer - pliki nag³ówkowe
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	libjpeg-devel
 
 %description devel
@@ -45,7 +46,7 @@ Pliki nag³ówkowe potrzebne do konsolidacji z libjasper.
 Summary:	JasPer - static library
 Summary(pl):	JasPer - biblioteka statyczna
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of libjasper.
@@ -57,7 +58,7 @@ Statyczna biblioteka libjasper.
 Summary:	JasPer Image Viewer
 Summary(pl):	Przegl±darka obrazków JasPer
 Group:		X11/Applications/Graphics
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description jiv
 Simple JasPer Image Viewer. Basic pan and zoom functionality is
@@ -83,11 +84,13 @@ kolorów powinna jednak wystarczyæ.
 %setup -q
 
 %build
-cp /usr/share/automake/config.sub acaux
+%{__libtoolize}
+%{__aclocal}
 %{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
-	--enable-shared \
-	--with-glut-include-dir=/usr/X11R6/include
+	--enable-shared
 
 %{__make}
 
