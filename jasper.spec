@@ -9,6 +9,7 @@ Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
 # Source0-md5:	6c21653efce946a611a78876fb7ebf3b
 URL:		http://www.ece.uvic.ca/~mdadams/jasper/
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	glut-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	unzip
@@ -82,6 +83,7 @@ kolorów powinna jednak wystarczyæ.
 %setup -q
 
 %build
+cp /usr/share/automake/config.sub acaux
 %{__autoconf}
 %configure \
 	--enable-shared \
