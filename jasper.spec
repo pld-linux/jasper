@@ -32,6 +32,7 @@ Summary:	JasPer - header files
 Summary(pl):	JasPer - pliki nag³ówkowe
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	libjpeg-devel
 
 %description devel
 Header files needed to compile programs with libjasper.
