@@ -8,9 +8,12 @@ Group:		Libraries
 Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
 URL:		http://www.ece.uvic.ca/~mdadams/jasper/
 BuildRequires:	autoconf
+BuildRequires:	glut-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_xbindir	/usr/X11R6/bin
 
 %description
 JasPer is a collection of software (i.e., a library and application
@@ -49,13 +52,40 @@ Static version of libjasper..
 %description static -l pl
 Statyczna biblioteka libjasper.
 
+%package jiv
+Summary:	JasPer Image Viewer
+Summary(pl):	Przegl±darka obrazków JasPer
+Group:		X11/Applications/Graphics
+Requires:	%{name} = %{version}
+
+%description jiv
+Simple JasPer Image Viewer. Basic pan and zoom functionality is
+provided. Components of an image may be viewed individually. Color
+components may also be viewed together as a composite image. At
+present, the jiv image viewer has only trivial support for color. It
+recognizes RGB and YCbCr color spaces, but does not use tone
+reproduction curves and the like in order to accurately reproduce
+color. For basic testing purposes, however, the color reproduction
+should suffice.
+
+%description jiv -l pl
+Prosta przegl±darka obrazków JasPer. Ma podstawow± funkcjonalo¶æ
+przewijania i powiêkszania. Poszczególne sk³adniki obrazka mog± byæ
+ogl±dane oddzielnie. Sk³adowe kolory mog± byæ ogl±dane tak¿e razem,
+jako z³o¿ony obraz. Aktualnie przegl±darka ma tylko prost± obs³ugê
+koloru. Rozpoznaje przestrzenie RGB i YCbCr, ale nie u¿ywa krzywych
+reprodukcji tonalnej i podobnych rzeczy maj±cych za zadanie dok³adne
+odwzorowanie koloru. Do podstawowych celów testowych taka obs³uga
+kolorów powinna jednak wystarczyæ.
+
 %prep
 %setup -q
 
 %build
 %{__autoconf}
 %configure \
-	--enable-shared
+	--enable-shared \
+	--with-glut-include-dir=/usr/X11R6/include
 
 %{__make}
 
@@ -64,7 +94,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf LICENSE NEWS README
+install -d $RPM_BUILD_ROOT%{_xbindir}
+mv -f $RPM_BUILD_ROOT{%{_bindir},%{_xbindir}}/jiv
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -74,7 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz doc/jasper*
+%doc LICENSE NEWS README doc/jasper*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
@@ -87,3 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files jiv
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_xbindir}/*
