@@ -2,7 +2,7 @@ Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
 Version:	1.700.2
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Libraries
 Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
@@ -12,8 +12,6 @@ BuildRequires:	glut-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_xbindir	/usr/X11R6/bin
 
 %description
 JasPer is a collection of software (i.e., a library and application
@@ -94,9 +92,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-##install -d $RPM_BUILD_ROOT%{_xbindir}
-##mv -f $RPM_BUILD_ROOT{%{_bindir},%{_xbindir}}/jiv
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -106,7 +101,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE NEWS README doc/jasper*
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/img*
+%attr(755,root,root) %{_bindir}/jasper
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
@@ -121,4 +117,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files jiv
 %defattr(644,root,root,755)
-##%attr(755,root,root) %{_xbindir}/*
+%attr(755,root,root) %{_bindir}/jiv
