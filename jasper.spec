@@ -13,6 +13,7 @@ Source0:	http://www.ece.ubc.ca/~mdadams/jasper/software/%{name}-%{version}.zip
 URL:		http://www.ece.ubc.ca/~mdadams/jasper/
 BuildRequires:	autoconf
 BuildRequires:	libjpeg-devel
+BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
