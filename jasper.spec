@@ -6,6 +6,7 @@ Release:	2
 License:	BSD-like
 Group:		Libraries
 Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
+# Source0-md5:	4eedf9b1c1cdc53c631673eefe917599
 URL:		http://www.ece.uvic.ca/~mdadams/jasper/
 BuildRequires:	autoconf
 BuildRequires:	glut-devel
