@@ -9,6 +9,9 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	Библиотеки
+Group(uk):	Б╕бл╕отеки
 Source0:	http://www.ece.ubc.ca/~mdadams/jasper/software/%{name}-%{version}.zip
 URL:		http://www.ece.ubc.ca/~mdadams/jasper/
 BuildRequires:	autoconf
