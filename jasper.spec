@@ -31,6 +31,17 @@ i obróbki obrazków w ró¿nych formatach. Jednym z nich jest JPEG-2000
 zdefiniowany w ISO/IEC 15444-1:2000 (JasPer zawiera tylko czê¶ciow±
 implementacjê tego formatu).
 
+%package libs
+Summary:	JasPer library
+Summary(pl):	Biblioteka JasPer
+Group:		Libraries
+
+%description libs
+JasPer library.
+
+%description libs -l pl
+Biblioteka JasPer.
+
 %package devel
 Summary:	JasPer - header files
 Summary(pl):	JasPer - pliki nag³ówkowe
@@ -43,17 +54,6 @@ Header files needed to compile programs with libjasper.
 
 %description devel -l pl
 Pliki nag³ówkowe potrzebne do konsolidacji z libjasper.
-
-%package libs
-Summary:	JasPer library
-Summary(pl):	Biblioteka JasPer
-Group:		Libraries
-
-%description libs
-JasPer library.
-
-%description libs -l pl
-Biblioteka JasPer.
 
 %package static
 Summary:	JasPer - static library
@@ -125,15 +125,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/img*
 %attr(755,root,root) %{_bindir}/jasper
 
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/jasper
-
-%files libs
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files static
 %defattr(644,root,root,755)
