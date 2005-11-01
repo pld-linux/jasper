@@ -2,7 +2,8 @@ Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
 Version:	1.701.0
-Release:	2
+Release:	2.3
+Epoch:		0
 License:	BSD-like
 Group:		Libraries
 Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
@@ -14,6 +15,7 @@ BuildRequires:	glut-devel >= 3.7-12
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	unzip
+Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,7 +35,7 @@ implementacjê tego formatu).
 Summary:	JasPer - header files
 Summary(pl):	JasPer - pliki nag³ówkowe
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	libjpeg-devel
 
 %description devel
@@ -42,11 +44,18 @@ Header files needed to compile programs with libjasper.
 %description devel -l pl
 Pliki nag³ówkowe potrzebne do konsolidacji z libjasper.
 
+%package libs
+Summary:	JasPer library
+Group:		Libraries
+
+%description libs
+JasPer library.
+
 %package static
 Summary:	JasPer - static library
 Summary(pl):	JasPer - biblioteka statyczna
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static version of libjasper.
@@ -58,7 +67,7 @@ Statyczna biblioteka libjasper.
 Summary:	JasPer Image Viewer
 Summary(pl):	Przegl±darka obrazków JasPer
 Group:		X11/Applications/Graphics
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description jiv
 Simple JasPer Image Viewer. Basic pan and zoom functionality is
@@ -103,21 +112,24 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc LICENSE NEWS README doc/jasper*
 %attr(755,root,root) %{_bindir}/img*
 %attr(755,root,root) %{_bindir}/jasper
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/jasper
+
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files static
 %defattr(644,root,root,755)
