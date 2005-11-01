@@ -46,10 +46,14 @@ Pliki nag³ówkowe potrzebne do konsolidacji z libjasper.
 
 %package libs
 Summary:	JasPer library
+Summary(pl):	Biblioteka JasPer
 Group:		Libraries
 
 %description libs
 JasPer library.
+
+%description libs -l pl
+Biblioteka JasPer.
 
 %package static
 Summary:	JasPer - static library
