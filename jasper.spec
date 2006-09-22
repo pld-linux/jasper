@@ -16,7 +16,7 @@ URL:		http://www.ece.uvic.ca/~mdadams/jasper/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	glut-devel >= 3.7-12
-%{?without_opengl:BuildRequires:       glut-devel >= 3.7-12}
+%{?with_opengl:BuildRequires:       glut-devel >= 3.7-12}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	unzip
