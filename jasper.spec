@@ -107,7 +107,7 @@ kolorów powinna jednak wystarczyæ.
 %{__autoheader}
 %{__automake}
 %configure \
-        %{?without_opengl:--disable-opengl} \
+        %{!?with_opengl:--disable-opengl} \
 	--enable-shared
 
 %{__make}
