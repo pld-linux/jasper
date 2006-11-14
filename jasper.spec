@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without opengl  # Disable OpenGL
+%bcond_without opengl  # don't build (OpenGL-based) jiv
 #
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl):	JasPer - zestaw oprogramowania do obróbki obrazków
@@ -15,7 +15,7 @@ Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
 URL:		http://www.ece.uvic.ca/~mdadams/jasper/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-%{?with_opengl:BuildRequires:       glut-devel >= 3.7-12}
+%{?with_opengl:BuildRequires:       OpenGL-glut-devel >= 3.7}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	unzip
