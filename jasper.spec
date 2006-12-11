@@ -1,19 +1,19 @@
 #
 # Conditional build:
-%bcond_without opengl  # don't build (OpenGL-based) jiv
+%bcond_without	opengl	# don't build (OpenGL-based) jiv
 #
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
-Version:	1.701.0
-Release:	4
+Version:	1.900.0
+Release:	1
 Epoch:		0
 License:	BSD-like
 Group:		Libraries
 Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
-# Source0-md5:	22a9f74fc880e38dd125c60aa4e4ce97
+# Source0-md5:	bef4a89e72b6a2a68a963c0dc837bacb
 URL:		http://www.ece.uvic.ca/~mdadams/jasper/
-BuildRequires:	autoconf >= 2.57
+BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 %{?with_opengl:BuildRequires:       OpenGL-glut-devel >= 3.7}
 BuildRequires:	libjpeg-devel
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# nothing interesting
+rm -f $RPM_BUILD_ROOT%{_bindir}/tmrdemo
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -126,26 +129,29 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE NEWS README doc/jasper*
+%doc LICENSE NEWS README doc/jasper.pdf doc/jpeg2000.pdf
 %attr(755,root,root) %{_bindir}/img*
 %attr(755,root,root) %{_bindir}/jasper
+%{_mandir}/man1/img*.1*
+%{_mandir}/man1/jasper.1*
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libjasper.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libjasper.so
+%{_libdir}/libjasper.la
 %{_includedir}/jasper
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libjasper.a
 
 %if %{with opengl}
 %files jiv
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/jiv
+%{_mandir}/man1/jiv.1*
 %endif
