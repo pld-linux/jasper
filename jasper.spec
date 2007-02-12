@@ -3,7 +3,7 @@
 %bcond_without	opengl	# don't build (OpenGL-based) jiv
 #
 Summary:	JasPer - collection of software for coding and manipulation of images
-Summary(pl):	JasPer - zestaw oprogramowania do obróbki obrazków
+Summary(pl.UTF-8):   JasPer - zestaw oprogramowania do obrÃ³bki obrazkÃ³w
 Name:		jasper
 Version:	1.900.0
 Release:	1
@@ -29,26 +29,26 @@ handle image data in a variety of formats. One such format supported
 by JasPer is the JPEG-2000 code stream format defined in ISO/IEC
 15444-1:2000 (but JasPer contains only partial implementation).
 
-%description -l pl
+%description -l pl.UTF-8
 JasPer to zestaw oprogramowania (biblioteka i aplikacje) do kodowania
-i obróbki obrazków w ró¿nych formatach. Jednym z nich jest JPEG-2000
-zdefiniowany w ISO/IEC 15444-1:2000 (JasPer zawiera tylko czê¶ciow±
-implementacjê tego formatu).
+i obrÃ³bki obrazkÃ³w w rÃ³Å¼nych formatach. Jednym z nich jest JPEG-2000
+zdefiniowany w ISO/IEC 15444-1:2000 (JasPer zawiera tylko czÄ™Å›ciowÄ…
+implementacjÄ™ tego formatu).
 
 %package libs
 Summary:	JasPer library
-Summary(pl):	Biblioteka JasPer
+Summary(pl.UTF-8):   Biblioteka JasPer
 Group:		Libraries
 
 %description libs
 JasPer library.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteka JasPer.
 
 %package devel
 Summary:	JasPer - header files
-Summary(pl):	JasPer - pliki nag³ówkowe
+Summary(pl.UTF-8):   JasPer - pliki nagÅ‚Ã³wkowe
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	libjpeg-devel
@@ -56,24 +56,24 @@ Requires:	libjpeg-devel
 %description devel
 Header files needed to compile programs with libjasper.
 
-%description devel -l pl
-Pliki nag³ówkowe potrzebne do konsolidacji z libjasper.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe potrzebne do konsolidacji z libjasper.
 
 %package static
 Summary:	JasPer - static library
-Summary(pl):	JasPer - biblioteka statyczna
+Summary(pl.UTF-8):   JasPer - biblioteka statyczna
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static version of libjasper.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libjasper.
 
 %package jiv
 Summary:	JasPer Image Viewer
-Summary(pl):	Przegl±darka obrazków JasPer
+Summary(pl.UTF-8):   PrzeglÄ…darka obrazkÃ³w JasPer
 Group:		X11/Applications/Graphics
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -87,15 +87,15 @@ reproduction curves and the like in order to accurately reproduce
 color. For basic testing purposes, however, the color reproduction
 should suffice.
 
-%description jiv -l pl
-Prosta przegl±darka obrazków JasPer. Ma podstawow± funkcjonalno¶æ
-przewijania i powiêkszania. Poszczególne sk³adniki obrazka mog± byæ
-ogl±dane oddzielnie. Sk³adowe kolory mog± byæ ogl±dane tak¿e razem,
-jako z³o¿ony obraz. Aktualnie przegl±darka ma tylko prost± obs³ugê
-koloru. Rozpoznaje przestrzenie RGB i YCbCr, ale nie u¿ywa krzywych
-reprodukcji tonalnej i podobnych rzeczy maj±cych za zadanie dok³adne
-odwzorowanie koloru. Do podstawowych celów testowych taka obs³uga
-kolorów powinna jednak wystarczyæ.
+%description jiv -l pl.UTF-8
+Prosta przeglÄ…darka obrazkÃ³w JasPer. Ma podstawowÄ… funkcjonalnoÅ›Ä‡
+przewijania i powiÄ™kszania. PoszczegÃ³lne skÅ‚adniki obrazka mogÄ… byÄ‡
+oglÄ…dane oddzielnie. SkÅ‚adowe kolory mogÄ… byÄ‡ oglÄ…dane takÅ¼e razem,
+jako zÅ‚oÅ¼ony obraz. Aktualnie przeglÄ…darka ma tylko prostÄ… obsÅ‚ugÄ™
+koloru. Rozpoznaje przestrzenie RGB i YCbCr, ale nie uÅ¼ywa krzywych
+reprodukcji tonalnej i podobnych rzeczy majÄ…cych za zadanie dokÅ‚adne
+odwzorowanie koloru. Do podstawowych celÃ³w testowych taka obsÅ‚uga
+kolorÃ³w powinna jednak wystarczyÄ‡.
 
 %prep
 %setup -q
