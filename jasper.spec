@@ -3,7 +3,7 @@
 %bcond_without	opengl	# don't build (OpenGL-based) jiv
 #
 Summary:	JasPer - collection of software for coding and manipulation of images
-Summary(pl.UTF-8):   JasPer - zestaw oprogramowania do obróbki obrazków
+Summary(pl.UTF-8):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
 Version:	1.900.0
 Release:	1
@@ -37,7 +37,7 @@ implementację tego formatu).
 
 %package libs
 Summary:	JasPer library
-Summary(pl.UTF-8):   Biblioteka JasPer
+Summary(pl.UTF-8):	Biblioteka JasPer
 Group:		Libraries
 
 %description libs
@@ -48,7 +48,7 @@ Biblioteka JasPer.
 
 %package devel
 Summary:	JasPer - header files
-Summary(pl.UTF-8):   JasPer - pliki nagłówkowe
+Summary(pl.UTF-8):	JasPer - pliki nagłówkowe
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	libjpeg-devel
@@ -61,7 +61,7 @@ Pliki nagłówkowe potrzebne do konsolidacji z libjasper.
 
 %package static
 Summary:	JasPer - static library
-Summary(pl.UTF-8):   JasPer - biblioteka statyczna
+Summary(pl.UTF-8):	JasPer - biblioteka statyczna
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
@@ -73,7 +73,7 @@ Statyczna biblioteka libjasper.
 
 %package jiv
 Summary:	JasPer Image Viewer
-Summary(pl.UTF-8):   Przeglądarka obrazków JasPer
+Summary(pl.UTF-8):	Przeglądarka obrazków JasPer
 Group:		X11/Applications/Graphics
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
