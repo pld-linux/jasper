@@ -5,13 +5,13 @@
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl.UTF-8):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
-Version:	1.900.0
+Version:	1.900.1
 Release:	1
 Epoch:		0
 License:	BSD-like
 Group:		Libraries
 Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
-# Source0-md5:	bef4a89e72b6a2a68a963c0dc837bacb
+# Source0-md5:	a342b2b4495b3e1394e161eb5d85d754
 URL:		http://www.ece.uvic.ca/~mdadams/jasper/
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
