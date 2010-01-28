@@ -13,11 +13,12 @@ Group:		Libraries
 Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
 # Source0-md5:	a342b2b4495b3e1394e161eb5d85d754
 URL:		http://www.ece.uvic.ca/~mdadams/jasper/
+%{?with_opengl:BuildRequires:	OpenGL-glut-devel >= 3.7}
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
-%{?with_opengl:BuildRequires:       OpenGL-glut-devel >= 3.7}
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
+BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -99,6 +100,7 @@ kolorów powinna jednak wystarczyć.
 
 %prep
 %setup -q
+%{__sed} 's/ -lXmu -lXi -lXext -lXt / /' -i configure.ac
 
 %build
 %{__libtoolize}
@@ -107,7 +109,7 @@ kolorów powinna jednak wystarczyć.
 %{__autoheader}
 %{__automake}
 %configure \
-        %{!?with_opengl:--disable-opengl} \
+	%{!?with_opengl:--disable-opengl} \
 	--enable-shared
 
 %{__make}
@@ -138,6 +140,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libjasper.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libjasper.so.1
 
 %files devel
 %defattr(644,root,root,755)
