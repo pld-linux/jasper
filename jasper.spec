@@ -13,7 +13,7 @@ Group:		Libraries
 Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
 # Source0-md5:	a342b2b4495b3e1394e161eb5d85d754
 URL:		http://www.ece.uvic.ca/~mdadams/jasper/
-%{?with_opengl:BuildRequires:	OpenGL-glut-devel >= 4.0}
+%{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	libjpeg-devel
@@ -21,7 +21,6 @@ BuildRequires:	libtool
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
-%{?with_opengl:Requires:	OpenGL-glut >= 4.0}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
