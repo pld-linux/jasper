@@ -5,20 +5,21 @@
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl.UTF-8):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
-Version:	1.900.1
-Release:	4
+Version:	1.900.29
+Release:	1
 Epoch:		0
 License:	BSD-like
 Group:		Libraries
-Source0:	http://www.ece.uvic.ca/~mdadams/jasper/software/%{name}-%{version}.zip
-# Source0-md5:	a342b2b4495b3e1394e161eb5d85d754
-URL:		http://www.ece.uvic.ca/~mdadams/jasper/
+#Source0Download: http://www.ece.uvic.ca/~frodo/jasper/#download
+Source0:	http://www.ece.uvic.ca/~frodo/jasper/software/%{name}-%{version}.tar.gz
+# Source0-md5:	4619ec9860c10e557b3f192f5e76f596
+Patch0:		%{name}-pc.patch
+URL:		http://www.ece.uvic.ca/~frodo/jasper/
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
-BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -100,7 +101,7 @@ kolorów powinna jednak wystarczyć.
 
 %prep
 %setup -q
-%{__sed} 's/ -lXmu -lXi -lXext -lXt / /' -i configure.ac
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -120,8 +121,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libjasper.la
 # nothing interesting
-rm -f $RPM_BUILD_ROOT%{_bindir}/tmrdemo
+%{__rm} $RPM_BUILD_ROOT%{_bindir}/tmrdemo
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -140,13 +143,13 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libjasper.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libjasper.so.1
+%attr(755,root,root) %ghost %{_libdir}/libjasper.so.4
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libjasper.so
-%{_libdir}/libjasper.la
 %{_includedir}/jasper
+%{_pkgconfigdir}/jasper.pc
 
 %files static
 %defattr(644,root,root,755)
