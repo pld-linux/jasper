@@ -5,21 +5,21 @@
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl.UTF-8):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
-Version:	1.900.29
+Version:	2.0.10
 Release:	1
 Epoch:		0
 License:	BSD-like
 Group:		Libraries
 #Source0Download: http://www.ece.uvic.ca/~frodo/jasper/#download
 Source0:	http://www.ece.uvic.ca/~frodo/jasper/software/%{name}-%{version}.tar.gz
-# Source0-md5:	4619ec9860c10e557b3f192f5e76f596
-Patch0:		%{name}-pc.patch
+# Source0-md5:	06882adcf92524eb493f3cf0d3f62c9a
 URL:		http://www.ece.uvic.ca/~frodo/jasper/
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
-BuildRequires:	autoconf >= 2.59-9
-BuildRequires:	automake
+BuildRequires:	cmake >= 2.8.11
+BuildRequires:	doxygen
+BuildRequires:	gcc >= 6:4.7
 BuildRequires:	libjpeg-devel
-BuildRequires:	libtool
+BuildRequires:	texlive-format-pdflatex
 BuildRequires:	unzip
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -54,24 +54,13 @@ Summary(pl.UTF-8):	JasPer - pliki nagłówkowe
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	libjpeg-devel
+Obsoletes:	jasper-static
 
 %description devel
 Header files needed to compile programs with libjasper.
 
 %description devel -l pl.UTF-8
 Pliki nagłówkowe potrzebne do konsolidacji z libjasper.
-
-%package static
-Summary:	JasPer - static library
-Summary(pl.UTF-8):	JasPer - biblioteka statyczna
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
-
-%description static
-Static version of libjasper.
-
-%description static -l pl.UTF-8
-Statyczna biblioteka libjasper.
 
 %package jiv
 Summary:	JasPer Image Viewer
@@ -101,30 +90,27 @@ kolorów powinna jednak wystarczyć.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	%{!?with_opengl:--disable-opengl} \
-	--enable-shared
+# there is upstream directory named "build", use different name
+install -d builddir
+cd builddir
+# note: build/jasper.pc.in expects CMAKE_INSTALL_INCLUDEDIR and CMAKE_INSTALL_LIBDIR relative to CMAKE_INSTALL_PREFIX
+%cmake .. \
+	-DCMAKE_INSTALL_INCLUDEDIR:PATH=include \
+	-DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
+	-DJAS_ENABLE_AUTOMATIC_DEPENDENCIES=FALSE
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C builddir install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# obsoleted by pkg-config
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libjasper.la
-# nothing interesting
-%{__rm} $RPM_BUILD_ROOT%{_bindir}/tmrdemo
+# PDFs packaged as %doc, HTML redundant
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/{html,*.pdf,README}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -134,7 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE NEWS README doc/jasper.pdf doc/jpeg2000.pdf
+%doc ChangeLog LICENSE README doc/jasper.pdf doc/jpeg2000.pdf
 %attr(755,root,root) %{_bindir}/img*
 %attr(755,root,root) %{_bindir}/jasper
 %{_mandir}/man1/img*.1*
@@ -150,10 +136,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libjasper.so
 %{_includedir}/jasper
 %{_pkgconfigdir}/jasper.pc
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/libjasper.a
 
 %if %{with opengl}
 %files jiv

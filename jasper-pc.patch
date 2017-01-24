@@ -1,8 +1,0 @@
---- jasper-1.900.29/pkgconfig/jasper.pc.in.orig	2016-11-16 16:03:40.000000000 +0100
-+++ jasper-1.900.29/pkgconfig/jasper.pc.in	2017-01-22 11:59:28.134104956 +0100
-@@ -8,4 +8,5 @@
- Version: @VERSION@
- 
- Libs: -L${libdir} -ljasper
-+Libs.private: -ljpeg -lm
- Cflags: -I${includedir}/jasper
