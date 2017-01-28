@@ -13,6 +13,7 @@ Group:		Libraries
 #Source0Download: http://www.ece.uvic.ca/~frodo/jasper/#download
 Source0:	http://www.ece.uvic.ca/~frodo/jasper/software/%{name}-%{version}.tar.gz
 # Source0-md5:	06882adcf92524eb493f3cf0d3f62c9a
+Patch0:		%{name}-nocxx.patch
 URL:		http://www.ece.uvic.ca/~frodo/jasper/
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	cmake >= 2.8.11
@@ -20,6 +21,9 @@ BuildRequires:	doxygen
 BuildRequires:	gcc >= 6:4.7
 BuildRequires:	libjpeg-devel
 BuildRequires:	texlive-format-pdflatex
+BuildRequires:	texlive-latex-ams
+BuildRequires:	texlive-latex-extend
+BuildRequires:	texlive-latex-wasysym
 BuildRequires:	unzip
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -90,6 +94,7 @@ kolorów powinna jednak wystarczyć.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # there is upstream directory named "build", use different name
