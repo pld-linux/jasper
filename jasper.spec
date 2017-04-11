@@ -5,15 +5,14 @@
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl.UTF-8):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
-Version:	2.0.10
-Release:	2
+Version:	2.0.12
+Release:	1
 Epoch:		0
 License:	BSD-like
 Group:		Libraries
 #Source0Download: http://www.ece.uvic.ca/~frodo/jasper/#download
 Source0:	http://www.ece.uvic.ca/~frodo/jasper/software/%{name}-%{version}.tar.gz
-# Source0-md5:	06882adcf92524eb493f3cf0d3f62c9a
-Patch0:		%{name}-nocxx.patch
+# Source0-md5:	b839a8bf418a64aa2d06413b23dd5ab3
 URL:		http://www.ece.uvic.ca/~frodo/jasper/
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	cmake >= 2.8.11
@@ -94,7 +93,6 @@ kolorów powinna jednak wystarczyć.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 # there is upstream directory named "build", use different name
