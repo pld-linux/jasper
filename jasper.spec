@@ -24,6 +24,7 @@ BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex-ams
 BuildRequires:	texlive-latex-extend
 BuildRequires:	texlive-latex-wasysym
+BuildRequires:	texlive-xetex
 BuildRequires:	unzip
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
