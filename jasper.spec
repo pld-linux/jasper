@@ -5,14 +5,15 @@
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl.UTF-8):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
-Version:	2.0.14
+Version:	2.0.16
 Release:	1
 Epoch:		0
 License:	BSD-like
 Group:		Libraries
-#Source0Download: http://www.ece.uvic.ca/~frodo/jasper/#download
-Source0:	http://www.ece.uvic.ca/~frodo/jasper/software/%{name}-%{version}.tar.gz
-# Source0-md5:	23561b51da8eb5d0dc85b91eff3d9a7f
+# versions up to 2.0.14: http://www.ece.uvic.ca/~frodo/jasper/#download
+#Source0Download: https://github.com/mdadams/jasper/releases
+Source0:	https://github.com/mdadams/jasper/archive/version-%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	6291678a9481c41f18679ccc22afac82
 URL:		http://www.ece.uvic.ca/~frodo/jasper/
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	cmake >= 2.8.11
@@ -92,7 +93,7 @@ odwzorowanie koloru. Do podstawowych celów testowych taka obsługa
 kolorów powinna jednak wystarczyć.
 
 %prep
-%setup -q
+%setup -q -n %{name}-version-%{version}
 
 %build
 # there is upstream directory named "build", use different name
@@ -123,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog LICENSE README doc/jasper.pdf doc/jpeg2000.pdf
+%doc LICENSE README doc/jasper.pdf doc/jpeg2000.pdf
 %attr(755,root,root) %{_bindir}/img*
 %attr(755,root,root) %{_bindir}/jasper
 %{_mandir}/man1/img*.1*
