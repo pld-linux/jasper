@@ -20,10 +20,12 @@ BuildRequires:	cmake >= 2.8.11
 BuildRequires:	doxygen
 BuildRequires:	gcc >= 6:4.7
 BuildRequires:	libjpeg-devel
+BuildRequires:	tex-latex-adjustbox
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex-ams
 BuildRequires:	texlive-latex-extend
 BuildRequires:	texlive-latex-wasysym
+BuildRequires:	texlive-tex-xkeyval
 BuildRequires:	texlive-xetex
 BuildRequires:	unzip
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
