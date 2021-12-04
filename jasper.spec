@@ -61,7 +61,7 @@ Summary(pl.UTF-8):	JasPer - pliki nagłówkowe
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	libjpeg-devel
-Obsoletes:	jasper-static
+Obsoletes:	jasper-static < 2
 
 %description devel
 Header files needed to compile programs with libjasper.
