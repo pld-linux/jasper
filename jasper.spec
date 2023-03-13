@@ -1,19 +1,18 @@
 #
 # Conditional build:
-%bcond_without	opengl	# don't build (OpenGL-based) jiv
+%bcond_without	opengl	# (OpenGL-based) jiv viewer
 #
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl.UTF-8):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
-Version:	2.0.33
+Version:	3.0.6
 Release:	1
 Epoch:		0
-License:	BSD-like
+License:	JasPer v2.0 (BSD-like)
 Group:		Libraries
-# versions up to 2.0.14: http://www.ece.uvic.ca/~frodo/jasper/#download
 #Source0Download: https://github.com/jasper-software/jasper/releases
 Source0:	https://github.com/jasper-software/jasper/releases/download/version-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	8761ef749b696e3cace330801e27b486
+# Source0-md5:	f9388d52a6220303141a42d4c2c81e62
 URL:		https://www.ece.uvic.ca/~frodo/jasper/
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	cmake >= 2.8.11
@@ -118,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # PDFs packaged as %doc, HTML redundant
-%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/{html,*.pdf,README}
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/{html,*.pdf,README.md}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -128,16 +127,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE README doc/jasper.pdf doc/jpeg2000.pdf
-%attr(755,root,root) %{_bindir}/img*
+%attr(755,root,root) %{_bindir}/imgcmp
+%attr(755,root,root) %{_bindir}/imginfo
 %attr(755,root,root) %{_bindir}/jasper
-%{_mandir}/man1/img*.1*
+%{_mandir}/man1/imgcmp.1*
+%{_mandir}/man1/imginfo.1*
 %{_mandir}/man1/jasper.1*
 
 %files libs
 %defattr(644,root,root,755)
+%doc ChangeLog LICENSE.txt NEWS.txt README.md doc/jpeg2000.pdf
 %attr(755,root,root) %{_libdir}/libjasper.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libjasper.so.4
+%attr(755,root,root) %ghost %{_libdir}/libjasper.so.6
 
 %files devel
 %defattr(644,root,root,755)
