@@ -13,6 +13,7 @@ Group:		Libraries
 #Source0Download: https://github.com/jasper-software/jasper/releases
 Source0:	https://github.com/jasper-software/jasper/releases/download/version-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	f9388d52a6220303141a42d4c2c81e62
+Patch0:		parallel-doc-build.patch
 URL:		https://www.ece.uvic.ca/~frodo/jasper/
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	cmake >= 2.8.11
@@ -96,6 +97,7 @@ kolorów powinna jednak wystarczyć.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # there is upstream directory named "build", use different name
