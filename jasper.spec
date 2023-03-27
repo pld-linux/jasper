@@ -16,7 +16,7 @@ Source0:	https://github.com/jasper-software/jasper/releases/download/version-%{v
 Patch0:		parallel-doc-build.patch
 URL:		https://www.ece.uvic.ca/~frodo/jasper/
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
-BuildRequires:	cmake >= 2.8.11
+BuildRequires:	cmake >= 3.12
 BuildRequires:	doxygen
 BuildRequires:	gcc >= 6:4.7
 BuildRequires:	libjpeg-devel
