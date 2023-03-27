@@ -20,6 +20,7 @@ BuildRequires:	cmake >= 2.8.11
 BuildRequires:	doxygen
 BuildRequires:	gcc >= 6:4.7
 BuildRequires:	libjpeg-devel
+BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	tex-latex-adjustbox
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex-ams
