@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	opengl	# (OpenGL-based) jiv viewer
-%bcond_without	libheif	# support for libheif and HEIC codec (experimental)
+%bcond_without	heif	# support for libheif and HEIC codec (experimental)
 #
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl.UTF-8):	JasPer - zestaw oprogramowania do obróbki obrazków
@@ -20,7 +20,7 @@ URL:		https://www.ece.uvic.ca/~frodo/jasper/
 BuildRequires:	cmake >= 3.12
 BuildRequires:	doxygen
 BuildRequires:	gcc >= 6:4.7
-%{?with_libheif:BuildRequires:	libheif-devel}
+%{?with_heif:BuildRequires:	libheif-devel}
 BuildRequires:	libjpeg-devel
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	tex-latex-adjustbox
@@ -112,8 +112,8 @@ cd builddir
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
 	-DJAS_ENABLE_AUTOMATIC_DEPENDENCIES=OFF \
 	%{!?with_opengl:-DJAS_ENABLE_OPENGL=OFF} \
-	%{!?with_libheif:-DJAS_ENABLE_LIBHEIF=OFF} \
-	%{!?with_libheif:-DJAS_INCLUDE_HEIC_CODEC=OFF}
+	%{!?with_heif:-DJAS_ENABLE_LIBHEIF=OFF} \
+	%{!?with_heif:-DJAS_INCLUDE_HEIC_CODEC=OFF}
 
 %{__make}
 
