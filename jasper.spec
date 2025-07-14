@@ -100,7 +100,7 @@ kolorów powinna jednak wystarczyć.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 # there is upstream directory named "build", use different name
