@@ -15,7 +15,11 @@ Group:		Libraries
 Source0:	https://github.com/jasper-software/jasper/releases/download/version-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	5ebfacbbb70c6286fcd0ee08eceeea8c
 URL:		https://www.ece.uvic.ca/~frodo/jasper/
-%{?with_opengl:BuildRequires:	OpenGL-glut-devel}
+%if %{with opengl}
+BuildRequires:	OpenGL-devel
+BuildRequires:	OpenGL-GLU-devel
+BuildRequires:	OpenGL-glut-devel
+%endif
 BuildRequires:	cmake >= 3.12
 BuildRequires:	doxygen
 BuildRequires:	gcc >= 6:4.7
