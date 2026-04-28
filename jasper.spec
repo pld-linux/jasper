@@ -6,14 +6,14 @@
 Summary:	JasPer - collection of software for coding and manipulation of images
 Summary(pl.UTF-8):	JasPer - zestaw oprogramowania do obróbki obrazków
 Name:		jasper
-Version:	4.2.8
+Version:	4.2.9
 Release:	1
 Epoch:		0
 License:	JasPer v2.0 (BSD-like)
 Group:		Libraries
 #Source0Download: https://github.com/jasper-software/jasper/releases
 Source0:	https://github.com/jasper-software/jasper/releases/download/version-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	418bccc49963b8bbaecf61473e83553f
+# Source0-md5:	5ebfacbbb70c6286fcd0ee08eceeea8c
 URL:		https://www.ece.uvic.ca/~frodo/jasper/
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	cmake >= 3.12
