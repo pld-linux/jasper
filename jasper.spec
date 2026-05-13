@@ -34,7 +34,7 @@ BuildRequires:	texlive-latex-wasysym
 BuildRequires:	texlive-tex-xkeyval
 BuildRequires:	texlive-xetex
 BuildRequires:	unzip
-Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
+Requires:	%{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -65,8 +65,8 @@ Biblioteka JasPer.
 Summary:	JasPer - header files
 Summary(pl.UTF-8):	JasPer - pliki nagłówkowe
 Group:		Development/Libraries
-Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
-Requires:	libjpeg-devel
+Requires:	%{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:	libjpeg-devel%{?_isa}
 Obsoletes:	jasper-static < 2
 
 %description devel
@@ -79,7 +79,7 @@ Pliki nagłówkowe potrzebne do konsolidacji z libjasper.
 Summary:	JasPer Image Viewer
 Summary(pl.UTF-8):	Przeglądarka obrazków JasPer
 Group:		X11/Applications/Graphics
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description jiv
 Simple JasPer Image Viewer. Basic pan and zoom functionality is
